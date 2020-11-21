@@ -1,4 +1,4 @@
-package entities;
+package com.cms.entities;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

@@ -8,6 +8,11 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String home() {
-		return "home";
+		return "login_registration";
+	}
+	
+	@GetMapping("/complain")
+	public String complain() {
+		return "insert_complain";
 	}
 }
