@@ -1,14 +1,12 @@
 package com.cms.entities;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,12 +15,13 @@ public class Complain implements java.io.Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	@OneToMany(mappedBy="instructor",
-				cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-						CascadeType.DETACH, CascadeType.REFRESH})
-	private List<ComplainCategory> complainCategories;
-	
-	private List<Student> students;
+	@ManyToOne
+	@JoinColumn(name="complain_cat_id")
+	private ComplainCategory complainCategory;
+
+	@ManyToOne
+	@JoinColumn(name="std_id")
+	private Student student;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -38,70 +37,22 @@ public class Complain implements java.io.Serializable{
 	@Column(name="remarks")
 	private String remarks;
 	
-	public Complain() {}
-	
-	public Complain(List<ComplainCategory> complainCategories, List<Student> students,
-			Integer complainId, String complain,
-			String complainText, String fileLocation, String remarks) {
-		
-		this.complainCategories = complainCategories;
-		this.students = students;
-		this.complainId = complainId;
-		this.complainText = complainText;
-		this.fileLocation = fileLocation;
-		this.remarks = remarks;
-	}
-	
-	public Complain(List<ComplainCategory> complainCategories, List<Student> students,
-			String complainText, String fileLocation, String remarks) {
-		
-		this.complainCategories = complainCategories;
-		this.students = students;
-		this.complainText = complainText;
-		this.fileLocation = fileLocation;
-		this.remarks = remarks;
+	public ComplainCategory getComplainCategory() {
+		return complainCategory;
 	}
 
-	public Complain(Integer complainId, List<ComplainCategory> complainCategories, String complain,
-			String complainText, String fileLocation, String remarks) {
-		
-		this.complainCategories = complainCategories;
-		this.complainId = complainId;
-		this.complainText = complainText;
-		this.fileLocation = fileLocation;
-		this.remarks = remarks;
-	}
-	
-	public Complain(List<Student> students,
-			Integer complainId, String complain,
-			String complainText, String fileLocation, String remarks) {
-		
-		this.students = students;
-		this.complainId = complainId;
-		this.complainText = complainText;
-		this.fileLocation = fileLocation;
-		this.remarks = remarks;
-	}
-	
-	public List<ComplainCategory> getComplainCatId() {
-		return complainCategories;
+	public void setComplainCategory(ComplainCategory complainCategory) {
+		this.complainCategory = complainCategory;
 	}
 
-	public void setComplainCatId(List<ComplainCategory> complainCategories) {
-		this.complainCategories = complainCategories;
+	public Student getStudent() {
+		return student;
 	}
 
-	public List<Student> getStudents() {
-		return students;
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
-	public void setStudents(List<Student> students) {
-		this.students = students;
-	}
-
-
-	@Id 
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Integer getComplainId() {
 		return complainId;
 	}
@@ -136,10 +87,7 @@ public class Complain implements java.io.Serializable{
 	
 	@Override
 	public String toString() {
-		return "Complain [complainCategories=" + complainCategories + ", students=" + students + ", complainId="
-				+ complainId + ", complainText=" + complainText + ", fileLocation=" + fileLocation + ", remarks="
-				+ remarks + "]";
+		return "Complain [complainCategory=" + complainCategory + ", student=" + student + ", complainId=" + complainId
+				+ ", complainText=" + complainText + ", fileLocation=" + fileLocation + ", remarks=" + remarks + "]";
 	}
-
-	
 }
