@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.com">
+<head>
+<title>CMS Dashboard</title>
+</head>
+<body>
+
+	<h1>CMS Dashboard</h1>
+
+	<form action="/logout" method="POST">
+		<input type="hidden" th:name="${_csrf.parameterName}"
+			th:value="${_csrf.token}" />
+		<button>Logout</button>
+
+	</form>
+</body>
+</html>
