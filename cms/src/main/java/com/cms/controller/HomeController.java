@@ -10,4 +10,9 @@ public class HomeController {
 	public String complain() {
 		return "insert_complain";
 	}
+	
+	@GetMapping("/dashboard")
+	public String dashboard() {
+		return "dashboard";
+	}
 }
