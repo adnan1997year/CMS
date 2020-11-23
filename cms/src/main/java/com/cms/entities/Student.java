@@ -1,10 +1,13 @@
 package com.cms.entities;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.cms.security.Authority;
 
 @Entity
 @Table(name="student_registration")
@@ -42,6 +47,9 @@ public class Student {
 	
 	@Column(name="std_password")
 	private String stdPassword;
+	
+	@OneToMany(mappedBy="student", fetch = FetchType.EAGER)
+	private Set<Authority> authorities = new HashSet<Authority>();
 	
 	@Column(name="remarks")
 	private String remarks;
@@ -116,6 +124,14 @@ public class Student {
 
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
+	}
+	
+	public Set<Authority> getAuthorities() {
+		return authorities;
+	}
+
+	public void setAuthorities(Set<Authority> authorities) {
+		this.authorities = authorities;
 	}
 
 	@Override
