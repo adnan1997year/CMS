@@ -2,6 +2,13 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
 <title>CMS Login</title>
+
+<!-- ////////////////////////////////////// CDNS  ///////////////////////////////////////////////-->
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+<!-- /////////////////////////////////////////////////////////////////////////////////////////// -->
+
 </head>
 <body>
 	<form action="" method="post">
@@ -36,8 +43,22 @@
 			</p>
 			<div>
 				<button type="submit" class="btn">Log in</button>
+				<button type="button" class="btn" id="createAccount">Create Account</button>
 			</div>
 		</fieldset>
 	</form>
+	<script>
+	
+	
+	$(function(){
+		
+		$("#createAccount").click(function(){
+			
+			window.location.href= "/register";
+		});		
+		
+	});
+	
+	</script>
 </body>
 </html>
