@@ -7,14 +7,14 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.cms.entities.Student;
-import com.cms.repositories.UserRepository;
+import com.cms.repositories.StudentRepository;
 import com.cms.security.CustomSecurityStudent;
 
 @Service
 public class UserDetailsServiceImp implements UserDetailsService{
 
 	@Autowired
-	UserRepository userRepository;
+	StudentRepository userRepository;
 	
 	
 	@Override
