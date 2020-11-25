@@ -18,33 +18,39 @@ public class LoginController {
 	@Autowired
 	private StudentService studentService; 	
 	
+//	@GetMapping("/login")
+//	public String login() {
+//		
+//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//		
+//		if(authentication == null || authentication instanceof AnonymousAuthenticationToken)
+//			return "login_registration";
+//			
+//		return "redirect:/login_registration";
+//	}
+	
 	@GetMapping("/login")
-	public String login() {
+	public String register(ModelMap model) {
+		model.put("student", new Student());
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		
 		if(authentication == null || authentication instanceof AnonymousAuthenticationToken)
-			return "login";
+			return "login_registration";
 			
-		return "redirect:/";
+		return "redirect:/login_registration";
 	}
 	
-	@GetMapping("/register")
-	public String register(ModelMap model) {
-		model.put("student", new Student());
-		return "register";
-	}
-	
-	@GetMapping("/login2")
-	public String login2() {
-		return "login_registration";
-	}
-	
-	@PostMapping("/register")
+	@PostMapping("/register_form")
 	public String postRegister (Student student) {
 		
 		studentService.save(student);
 		
-		return "redirect:/login";
+		return "redirect:/";
+	}
+	
+	@GetMapping("/register_form")
+	public String getRegister() {
+		return "redirect:/login_registration";
 	}
 }

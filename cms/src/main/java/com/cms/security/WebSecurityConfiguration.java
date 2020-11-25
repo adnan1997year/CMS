@@ -9,9 +9,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
 	@Autowired
 	private UserDetailsService userDetailsService;
@@ -36,6 +38,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 			.antMatchers("/").permitAll()
 			.antMatchers("/register").permitAll()
+			.antMatchers("/register_form").permitAll()
+			.antMatchers("/login2").permitAll()
+			.antMatchers("/css/**").permitAll()
 			.antMatchers("/admin/**").hasRole("ADMIN")
 			.anyRequest().hasRole("USER").and()
 		  .formLogin()

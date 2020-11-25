@@ -39,6 +39,9 @@ public class Student {
 	@Column(name="std_gender")
 	private String stdGender;
 	
+	@Column(name="std_number")
+	private String stdNumber;
+	
 	@Column(name="std_cnic")
 	private String stdCnic;
 	
@@ -92,6 +95,14 @@ public class Student {
 
 	public void setStdGender(String stdGender) {
 		this.stdGender = stdGender;
+	}
+	
+	public String getStdNumber() {
+		return stdNumber;
+	}
+
+	public void setStdNumber(String stdNumber) {
+		this.stdNumber = stdNumber;
 	}
 
 	public String getStdCnic() {
