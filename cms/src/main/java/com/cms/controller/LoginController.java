@@ -29,6 +29,13 @@ public class LoginController {
 		return "redirect:/";
 	}
 	
+	@GetMapping("/register")
+	public String register(ModelMap model) {
+		model.put("student", new Student());
+			
+		return "register";
+	}
+	
 	@PostMapping("/register_form")
 	public String postRegister (Student student) {
 		

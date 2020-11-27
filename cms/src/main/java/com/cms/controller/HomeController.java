@@ -18,14 +18,6 @@ public class HomeController {
 		return "insert_complain";
 	}
 	
-	@GetMapping("/register")
-	public String register(ModelMap model) {
-		model.put("student", new Student());
-			
-		return "register";
-	}
-	
-	
 	@GetMapping("/dashboard")
 	public String dashboard() {
 		return "dashboard";

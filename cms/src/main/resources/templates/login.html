@@ -33,7 +33,10 @@
 						Reason: <span th:text="SPRING_SECURITY_LAST_EXCEPTION.message"></span>
 					</div>
 				</div>
-				<div th:if="${param.logout != null}">you have been logged out
+				<div th:if="${param.logout != null}">
+				<div class="alert alert-primary" role="alert">
+  						You have been logged out
+				</div>
 				</div>
 				<div class="form-group">
 					<label for="Username">Username</label> <input type="text"
@@ -48,7 +51,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="password">Don't have account? <a href="#">Create
+					<label for="password">Don't have account? <a href="register">Create
 							Account</a></label>
 				</div>
 
@@ -59,6 +62,23 @@
 	
 	<div th:replace="fragments/footer :: footer">
 	</div>
-
+	
+	<script th:if="${param.error != null}">
+		document.querySelector(".login").style.height = "27rem";
+		$(".alert-danger").fadeTo(2000, 500).slideUp(500, function(){
+			 document.querySelector(".login").style.height = "22rem";
+		    $(".alert-danger").slideUp(500);
+		});
+		window.history.replaceState({}, document.title, "/" + "login");
+	</script>
+	
+	<script th:if="${param.logout != null}">
+		document.querySelector(".login").style.height = "27rem";
+		$(".alert-primary").fadeTo(2000, 500).slideUp(500, function(){
+			 document.querySelector(".login").style.height = "22rem";
+		    $(".alert-primary").slideUp(500);
+		});
+		window.history.replaceState({}, document.title, "/" + "login");
+	</script>
 </body>
 </html>
