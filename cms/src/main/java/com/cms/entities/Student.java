@@ -51,7 +51,7 @@ public class Student {
 	@Column(name="std_password")
 	private String stdPassword;
 	
-	@OneToMany(mappedBy="student", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="studentAuth", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	private Set<Authority> authorities = new HashSet<Authority>();
 	
 	@Column(name="remarks")

@@ -24,7 +24,7 @@ public class UserDetailsServiceImp implements UserDetailsService{
 		
 		if(student == null)
 			throw new UsernameNotFoundException("Invalid Username not found");
-		
+
 		return new CustomSecurityStudent(student);
 	}
 }

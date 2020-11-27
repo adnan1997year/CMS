@@ -14,6 +14,7 @@ import org.springframework.security.core.GrantedAuthority;
 import com.cms.entities.Student;
 
 @Entity
+@Table(name="Authority")
 public class Authority implements GrantedAuthority{
 
 	
@@ -28,7 +29,7 @@ public class Authority implements GrantedAuthority{
 	
 	@ManyToOne
 	@JoinColumn(name="std_id")
-	private Student student;
+	private Student studentAuth;
 	
 	@Override
 	public String getAuthority() {
@@ -45,11 +46,11 @@ public class Authority implements GrantedAuthority{
 	}
 
 	public Student getStudent() {
-		return student;
+		return studentAuth;
 	}
 
 	public void setStudent(Student student) {
-		this.student = student;
+		this.studentAuth = student;
 	}
 
 	public void setAuthority(String authority) {

@@ -7,5 +7,4 @@ import com.cms.entities.Student;
 public interface StudentRepository extends JpaRepository<Student, Integer>{
 
 	Student findByStdUsername(String username);
-	
 }

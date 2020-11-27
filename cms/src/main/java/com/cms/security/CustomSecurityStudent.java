@@ -12,9 +12,6 @@ import com.cms.entities.Student;
 
 public class CustomSecurityStudent extends Student implements UserDetails{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -3870829784921374706L;
 	
 	public CustomSecurityStudent() {}
