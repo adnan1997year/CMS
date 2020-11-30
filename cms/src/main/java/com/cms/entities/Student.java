@@ -11,10 +11,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 import com.cms.security.Authority;
 
@@ -31,25 +33,49 @@ public class Student {
 	private Integer stdId;
 	
 	@Column(name="std_name")
+	@NotBlank(message="Name cannot Empty")
 	private String stdName;
 	
+	
 	@Column(name="std_username")
+	@NotBlank(message="Username cannot be empty")
+	@Size(min=5, max=30)
 	private String stdUsername;
 	
+	@NotBlank(message="Gender should be selected")
 	@Column(name="std_gender")
 	private String stdGender;
 	
+	@NotBlank(message="Phone Number cannot be empty")
+	@Size(min=11, max=11, message="There should be 11 numbers ")
 	@Column(name="std_number")
 	private String stdNumber;
 	
+	@NotBlank(message="Cnic cannot be empty")
+	@Size(min=13, max=13, message="Cnic should have 13 numbers")
 	@Column(name="std_cnic")
 	private String stdCnic;
 	
+	@NotBlank(message="Address cannot be empty")
 	@Column(name="std_address")
 	private String stdAddress;
 	
+	@NotBlank(message="Password cannot be empty")
+	@Size(min=8, message="Password should contain minimum 8 letters")
 	@Column(name="std_password")
 	private String stdPassword;
+	
+    public String getRetypePassword() {
+		return retypePassword;
+	}
+
+	public void setRetypePassword(String retypePassword) {
+		this.retypePassword = retypePassword;
+	}
+
+	@Transient
+    @NotBlank(message="Confirm password cannot be empty")
+	private String retypePassword;
 	
 	@OneToMany(mappedBy="studentAuth", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	private Set<Authority> authorities = new HashSet<Authority>();

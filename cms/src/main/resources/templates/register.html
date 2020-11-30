@@ -6,7 +6,13 @@
 <title>Document</title>
 <head th:replace="fragments/headers :: links">
 </head>
-
+	<style>
+		
+		span{
+			color: red;
+		}	
+	
+	</style>
 </head>
 <body>
 	<div th:replace="fragments/topnav :: navbar"></div>
@@ -14,7 +20,7 @@
 		<div class="col-lg-12 d-flex justify-content-center" style="margin-top:50px">
 				<div class="card registration">
 					<div class="card-header">Student Registration</div>
-					<form action="register_form" method="post">
+					<form action="" method="post">
 						
 <!--                      //////////// CSRF TOKEN ///////////// -->
 					
@@ -25,12 +31,16 @@
 						<div class="form-group">
 							<label for="Name">Name</label> <input type="text"
 								class="form-control" id="name" placeholder="Enter your name" th:field="${student.stdName}">
+								<span th:if="${#fields.hasErrors('student.stdName')}" th:errors="*{student.stdName}">Name
+                            Error</span>
 						</div>
 
 						<div class="form-group">
 							<label for="username">Username</label> <input type="text"
 								class="form-control" id="username"
 								placeholder="Enter your username" th:field="${student.stdUsername}">
+								 <span th:if="${#fields.hasErrors('student.stdUsername')}" th:errors="*{student.stdUsername}">Username
+                            Error</span>
 						</div>
 
 						<div class="form-group">
@@ -44,34 +54,46 @@
 									id="gender" value="Female"  th:field="${student.stdGender}"> <label
 									class="form-check-label" for="inlineRadio1">Female</label>
 							</div>
+							<span th:if="${#fields.hasErrors('student.stdGender')}" th:errors="*{student.stdGender}">Gender
+                            Error</span>
 						</div>
 						
 						<div class="form-group">
 							<label for="number">Phone Number</label> <input
 								type="number" class="form-control" id="number"
 								placeholder="Enter your Phone Number" th:field="${student.stdNumber}">
+								<span th:if="${#fields.hasErrors('student.stdNumber')}" th:errors="*{student.stdUsername}">Phone Number
+                            Error</span>
 						</div>
 
 						<div class="form-group">
 							<label for="cnic">CNIC (without dashes)</label> <input
 								type="number" class="form-control" id="cnic"
 								placeholder="Enter your CNIC" th:field="${student.stdCnic}" />
+								<span th:if="${#fields.hasErrors('student.stdCnic')}" th:errors="*{student.stdCnic}">CNIC
+                            Error</span>
 						</div>
 
 						<div class="form-group">
 							<label for="cnic">Address</label> <input type="text"
 								class="form-control" id="address"
 								placeholder="Enter your address" th:field="${student.stdAddress}" />
+								<span th:if="${#fields.hasErrors('student.stdAddress')}" th:errors="*{student.stdAddress}">Address
+                            Error</span>
 						</div>
 
 						<div class="form-group">
 							<label for="password">Password</label> <input type="password"
 								class="form-control" id="password" placeholder="Enter Password" th:field="${student.stdPassword}" />
+								<span th:if="${#fields.hasErrors('student.stdPassword')}" th:errors="*{student.stdPassword}">Password
+                            Error</span>
 						</div>
 						
 						<div class="form-group">
 							<label for="confirm_password">Password</label> <input type="password"
 								class="form-control" id="confirm_password" placeholder="Enter Confirm Password">
+								<span th:if="${#fields.hasErrors('student.retypePassword')}" th:errors="*{student.retypePassword}">Retype-Password
+                            Error</span>
 						</div>
 
 						<button type="submit" class="btn btn-primary float-right">Create

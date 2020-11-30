@@ -69,7 +69,7 @@
 			 document.querySelector(".login").style.height = "22rem";
 		    $(".alert-danger").slideUp(500);
 		});
-		window.history.replaceState({}, document.title, "/" + "login");
+		window.history.replaceState({}, document.title, "/" + "cms/login");
 	</script>
 	
 	<script th:if="${param.logout != null}">
@@ -78,7 +78,7 @@
 			 document.querySelector(".login").style.height = "22rem";
 		    $(".alert-primary").slideUp(500);
 		});
-		window.history.replaceState({}, document.title, "/" + "login");
+		window.history.replaceState({}, document.title, "/" + "cms/login");
 	</script>
 </body>
 </html>
