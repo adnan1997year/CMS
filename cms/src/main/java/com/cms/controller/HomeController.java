@@ -8,11 +8,6 @@ import com.cms.entities.Student;
 @Controller
 public class HomeController {
 	
-	@GetMapping("/complain")
-	public String complain() {
-		return "insert_complain";
-	}
-	
 	@GetMapping("/dashboard")
 	public String dashboard() {
 		return "dashboard";

@@ -91,7 +91,7 @@
 						
 						<div class="form-group">
 							<label for="confirm_password">Password</label> <input type="password"
-								class="form-control" id="confirm_password" placeholder="Enter Confirm Password">
+								class="form-control" id="confirm_password" placeholder="Enter Confirm Password" th:field="${student.retypePassword}">
 								<span th:if="${#fields.hasErrors('student.retypePassword')}" th:errors="*{student.retypePassword}">Retype-Password
                             Error</span>
 						</div>

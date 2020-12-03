@@ -55,9 +55,8 @@ public class LoginController {
 	     
 		 if (existing != null)   
 			 bindingResult.rejectValue("stdUsername", null, "There is already an account registered with this Username");
-	     
-		 
-		 if(!student.getStdPassword().equals(student.getRetypePassword()))
+	   
+		 if(!(student.getStdPassword().equals(student.getRetypePassword())))
 			 bindingResult.rejectValue("retypePassword", null, "Password and Confirm Password are not same");
 		}
 		
