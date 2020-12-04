@@ -1,0 +1,82 @@
+<head th:fragment="style">
+<style th:if="${#fields.hasErrors('student.stdName')}">
+	
+	#name{
+		border: 1px solid red;
+	}
+	#name:focus{
+		box-shadow: 1px -1px 10px -3px red;
+	}
+
+</style>
+<style th:if="${#fields.hasErrors('student.stdUsername')}">
+	
+	#username{
+		border: 1px solid red;
+	}
+	#username:focus{
+		box-shadow: 1px -1px 10px -3px red;
+	}
+
+</style>
+<style th:if="${#fields.hasErrors('student.stdGender')}">
+	
+	#gender{
+		border: 1px solid red;
+	}
+	#gender:focus{
+		box-shadow: 1px -1px 10px -3px red;
+	}
+
+</style>
+<style th:if="${#fields.hasErrors('student.stdNumber')}">
+	
+	#number{
+		border: 1px solid red;
+	}
+	#number:focus{
+		box-shadow: 1px -1px 10px -3px red;
+	}
+
+</style>
+<style th:if="${#fields.hasErrors('student.stdCnic')}">
+	
+	#cnic{
+		border: 1px solid red;
+	}
+	#cnic:focus{
+		box-shadow: 1px -1px 10px -3px red;
+	}
+
+</style>
+<style th:if="${#fields.hasErrors('student.stdAddress')}">
+	
+	#address{
+		border: 1px solid red;
+	}
+	#address:focus{
+		box-shadow: 1px -1px 10px -3px red;
+	}
+
+</style>
+<style th:if="${#fields.hasErrors('student.stdPassword')}">
+	
+	#password{
+		border: 1px solid red;
+	}
+	#password:focus{
+		box-shadow: 1px -1px 10px -3px red;
+	}
+
+</style>
+<style th:if="${#fields.hasErrors('student.retypePassword')}">
+	
+	#confirm_password{
+		border: 1px solid red;
+	}
+	#confirm_password:focus{
+		box-shadow: 1px -1px 10px -3px red;
+	}
+
+</style>
+</head>
